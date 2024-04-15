@@ -5,7 +5,7 @@ import beerService from "../../services/beer.service";
 function BeerDetailsPage() {
 
   const { beerId } = useParams()
-  const [beer, setBeer] = useState([])
+  const [beer, setBeer] = useState({})
 
   useEffect(() => {
 
@@ -13,7 +13,7 @@ function BeerDetailsPage() {
 
       const beer = await beerService.beerDetails(beerId)
       setBeer(beer)
-      console.log(beer)
+      //console.log(beer)
     }
 
     fetchBeer()
