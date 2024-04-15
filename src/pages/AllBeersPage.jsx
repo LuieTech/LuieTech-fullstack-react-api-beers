@@ -24,7 +24,7 @@ function AllBeersPage() {
 
     <>
       {allBeers.map(beer => (
-        <Link to={`/beers/${beer._id}`} key={beer._id}>
+        <Link to={`/beers/${beer._id}`} key={beer._id} className="text-decoration-none text-dark">
           <div  className="d-flex border m-5 p-4 gap-5" style={{width:"1000px"}}>
             <div> 
               <img src={beer.image_url} alt="beer-img" style={{width:"110px", height:"280px"}}/>
@@ -34,7 +34,7 @@ function AllBeersPage() {
               <h4 className="text-muted">{beer.tagline}</h4>
               <p className="">
                 Created by: 
-                <span className=""> {beer.contributed_by}</span>
+                <span className="underline-none"> {beer.contributed_by}</span>
               </p>
             </div>
           </div>
