@@ -20,11 +20,40 @@ const beerDetails = async (beerId) => {
 
 } 
 
+const randomBeer = async () => {
+
+  const response = fetch(`${baseApiUrl}/random`)
+  const randomBeer = await response.json()
+
+  return randomBeer;
+
+}
+
+const createBeer = async (data) => {
+
+  const response = await fetch(`${baseApiUrl}/new`, {
+
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if(!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`)
+  }
+
+  return response.json()
+
+}
+
 export default {
 
   allBeers,
-  beerDetails
-
+  beerDetails,
+  randomBeer,
+  createBeer
 }
 
 // const list = async () => {
