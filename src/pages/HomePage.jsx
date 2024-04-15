@@ -7,7 +7,7 @@ import newBeer from "../assets/new-beer.png"
 
 function HomePage() {
 
-  return <div className="">
+  return <div className="d-flex justify-content-center">
 
     <section className="flex-container m-5 ">
       <div className="mb-3 border" style={{width:"500px"}}>
