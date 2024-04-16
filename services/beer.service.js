@@ -14,7 +14,7 @@ const beerDetails = async (beerId) => {
 
   const response = await fetch(`${baseApiUrl}/${beerId}`)
   const beer = await response.json()
-  //console.log("Beer from the service file" , beer)
+  console.log("Beer from the service file" , beer)
 
   return beer;
 
@@ -22,7 +22,7 @@ const beerDetails = async (beerId) => {
 
 const randomBeer = async () => {
 
-  const response = fetch(`${baseApiUrl}/random`)
+  const response = await fetch(`${baseApiUrl}/random`)
   const randomBeer = await response.json()
 
   return randomBeer;
@@ -48,12 +48,25 @@ const createBeer = async (data) => {
 
 }
 
+const newSearch = async (query) => {
+
+  const search = await fetch(`${baseApiUrl}/search?q=${query}`)
+
+  if(!search) throw new Error(`HTTP error! ${search.status}`)
+
+  const response = await search.json()
+
+  return response
+
+}
+
 export default {
 
   allBeers,
   beerDetails,
   randomBeer,
-  createBeer
+  createBeer,
+  newSearch
 }
 
 // const list = async () => {
