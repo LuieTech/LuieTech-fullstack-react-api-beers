@@ -1,17 +1,22 @@
 import { useForm } from "react-hook-form";
 import beerService from "../../services/beer.service";
+import { useNavigate } from "react-router-dom";
 
 function AddBeerPage() {
 
+  const navigate = useNavigate();
   const { register, handleSubmit, reset, formState:{errors, isValid} } = useForm({
     mode: "onblur"
   })
 
   const onSubmit = async (data) => {
 
-    const beer = await beerService.createBeer(data)
-    console.log(beer)
+    const newBeer = await beerService.createBeer(data)
+    console.log("this is the created beer data ", newBeer)
     reset()
+
+    navigate('/beers')
+
   }
 
   return (
